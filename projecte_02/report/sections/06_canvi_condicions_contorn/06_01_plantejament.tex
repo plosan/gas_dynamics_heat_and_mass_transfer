@@ -1,0 +1,70 @@
+
+\subsection{Plantejament}
+
+Es considera una barra molt llarga de longitud $W$, de secció transversal quadrada formada per quatre materials iguals, $M_1$ a $M_4$\footnote{El problema plantejat és equivalent al d'una barra de secció transversal formada per un únic material. No obstant això, dividir la secció transversal de la barra en quatre materials permet aprofitar el codi ja desenvolupat i validat.}. La geometria del problema es mostra a la figura \ref{fig:nova_geometria}.
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\fill[fill=cyan!70!white] (0,0) rectangle (4.5*8/11,3*8/11);
+		\fill[fill=meatColor!70!white] (4.5*8/11,0) rectangle (9*8/11,6*8/11);
+		\fill[fill=green!70!white] (0,3*8/11) rectangle (4.5*8/11,9*8/11);
+		\fill[fill=red!70!white] (4.5*8/11,6*8/11) rectangle (9*8/11,9*8/11);
+		\draw[black, line width=0.3mm] (4.5*8/11,0) -- ++(0,9*8/11);
+		\draw[black, line width=0.3mm] (0,3*8/11) -- ++(4.5*8/11,0);
+		\draw[black, line width=0.3mm] (4.5*8/11,6*8/11) -- ++(4.5*8/11,0);
+		\draw[black, line width=0.5mm] (0,0) rectangle (9*8/11,9*8/11);
+		\node[black] at (2.25*8/11,1.5*8/11) {$M_1$};
+		\node[black] at (6.75*8/11,3.0*8/11) {$M_2$};
+		\node[black] at (2.25*8/11,6.0*8/11) {$M_3$};
+		\node[black] at (6.75*8/11,7.5*8/11) {$M_4$};
+		\node[black] at (-0.3,0) {$p_0$};
+		\node[black] at (4.5*8/11+0.3,3*8/11) {$p_1$};
+		\node[black] at (4.5*8/11-0.3,6*8/11) {$p_2$};
+		\node[black] at (9*8/11+0.3,9*8/11) {$p_3$};
+		\draw[->, black, line width=0.5mm] (0,0) -- ++(10*8/11,0) node[above]{$x$};
+		\draw[->, black, line width=0.5mm] (0,0) -- ++(0,10*8/11) node[right]{$y$};
+	\end{tikzpicture}
+	\caption{Esquema general del nou problema.}
+	\label{fig:nova_geometria}
+\end{figure}
+
+\noindent
+Les coordenades dels punts $p_0$ a $p_3$ es donen a la taula \ref{tab:noves_coordenades_punts}. Les propietats termofísiques dels quatre materials iguals es donen a la taula \ref{tab:noves_propietats_termofisiques}.
+\begin{table}[h]
+	\begin{minipage}[t]{.5\linewidth}
+		\centering
+		\begin{tabular}[t]{lcc}
+			\toprule[0.5mm]
+			Punt & $x \ [\meter]$ & $y \ [\meter]$ \\
+			\midrule[0.25mm]
+			$p_0$ & $0.00$ & $0.00$ \\			
+			$p_1$ & $0.75$ & $0.50$ \\
+			$p_2$ & $0.75$ & $1.00$ \\
+			$p_3$ & $1.50$ & $1.50$ \\		
+			\bottomrule[0.5mm]
+		\end{tabular}
+		\caption{Coordenades de $p_0$ a $p_4$.}
+		\label{tab:noves_coordenades_punts}
+	\end{minipage}%
+	\begin{minipage}[t]{.5\linewidth}
+		\centering
+		\begin{tabular}[t]{lccc}
+			\toprule[0.5mm]
+			Material & $\rho \ [\kilo\gram / \meter^3]$ & $c_p \ [\joule / \kilo\gram \kelvin]$ & $\lambda \ [\watt / \meter \kelvin]$ \\
+			\midrule[0.25mm]
+			$M_1$ & $2700.00$ & $900.00$ & $250.00$ \\
+			$M_2$ & $2700.00$ & $900.00$ & $250.00$ \\
+			$M_3$ & $2700.00$ & $900.00$ & $250.00$ \\
+			$M_4$ & $2700.00$ & $900.00$ & $250.00$ \\	
+			\bottomrule[0.5mm]
+		\end{tabular}
+		\caption{Propietats termofísiques.}
+		\label{tab:noves_propietats_termofisiques}
+	\end{minipage} 
+\end{table}
+
+\noindent
+Cada costat de la secció transversal de la barra està en contacte amb un fluid a una temperatura $T_g = 20 \ \celsius$ i amb un coeficient de transferència de calor $\alpha_g = 100 \ \watt / \meter^2 \, \kelvin$. La temperatura inicial de tot el domini és $T_0 = 200 \ \celsius$. 
+
+
+

@@ -1,0 +1,8 @@
+
+\subsection{Esquema d'integració temporal}
+
+Els tres esquemes d'integració esmentats anteriorment han estat l'esquema explícit, l'implícit i Crank--Nicolson. Donat que els esquemes implícit i Crank--Nicolson son incondicionalment estables, amb un $\Delta t$ gran donen els mateixos resultats que l'esquema explícit amb un $\Delta t$ petit. A més, com l'esquema de Crank--Nicolson és de segon ordre, al seu torn ha de produir resultats més precisos que l'esquema implícit.
+
+Per l'anàlisi de l'esquema d'integració temporal, es pren de nou una discretització uniforme amb $N_1 = 35$, amb passos de temps $\Delta t \in \{ 10.00, \, 50.00, \, 100.00 \} \ \second$. Els mapes de temperatures calculats són per $t = 5000 \ \second$ i $t = 10000 \ \second$. S'han analitzat els esquemes implícit i de Crank--Nicolson. No s'ha treballat amb l'esquema explícit pels motius esmentats. Pel mètode de Gauss--Seidel, es pren $\delta = 10^{-11}$. 
+
+Els mapes de temperatura per $t = 5000 \ \second$ es recullen a la figura \ref{fig:esquema_5000} i per $t = 10000$ es mostren a la figura \ref{fig:esquema_10000}. L'esquema implícit, tot i ser menys precís, dona tants bons resultats com l'esquema de Crank--Nicolson per a tot $\Delta t$. 

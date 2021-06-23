@@ -1,0 +1,9 @@
+
+\subsection{Pas de temps} \label{sec:analisi_pas_de_temps}
+
+El pas de temps $\Delta t$ o \emph{time--step} influeix en la integració temporal. Resulta intuïtiu que, com menor sigui $\Delta t$, més precisos seran els resultats donats pel codi de simulació. Tanmateix, això depèn del problema. Per exemple, si les condicions de contorn donen lloc a gradients de temperatura importants, el flux de calor serà gran i, en conseqüència, seran necessaris $\Delta t$ petits. 
+
+Per l'anàlisi del pas de temps s'escull una discretització uniforme en $N_1 = 35$\footnote{Com s'ha vist, la discretització uniforme no és la idònia pel problema actual, però d'aquesta manera els resultats dels diferents anàlisis són comparables.}. L'esquema d'integració numèrica és Crank--Nicolson, amb passos de temps $\Delta t \in \{ 0.50, \, 1.00, \, 5.00, \, 10.00, \, 20.00, \, 50.00 \} \ \second$. Es calculen els mapes de temperatures en $t = 5000 \ \second$ i $t = 10000 \ \second$. La condició de convergència pel mètode de Gauss--Seidel és $\delta = 10^{-11}$. 
+
+A la figura \ref{fig:pas_temps_5000} es mostren els mapes de temperatures en $t = 5000 \ \second$. A la figura \ref{fig:pas_temps_10000} es mostren per $t = 10000 \ \second$. Com s'aprecia, les diferències entre els diferents $\Delta t$ no són importants. Això permet treballar amb $\Delta t$ grans amb una pèrdua de precisió poc rellevant.
+ 

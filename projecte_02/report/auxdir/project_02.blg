@@ -1,0 +1,14 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'auxdir/project_02.blg'
+[125] biber-MSWIN64:340> INFO - === 
+[164] Biber.pm:415> INFO - Reading 'auxdir/project_02.bcf'
+[288] Biber.pm:952> INFO - Found 2 citekeys in bib section 0
+[305] Biber.pm:4340> INFO - Processing section 0
+[319] Biber.pm:4531> INFO - Looking for bibtex format file 'referencias.bib' for section 0
+[366] bibtex.pm:1689> INFO - LaTeX decoding ...
+[372] bibtex.pm:1494> INFO - Found BibTeX data source 'referencias.bib'
+[417] UCollate.pm:68> INFO - Overriding locale 'ca-AD' defaults 'variable = shifted' with 'variable = non-ignorable'
+[417] UCollate.pm:68> INFO - Overriding locale 'ca-AD' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[418] Biber.pm:4168> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'ca-AD'
+[420] bbl.pm:654> INFO - Writing 'auxdir/project_02.bbl' with encoding 'UTF-8'
+[421] bbl.pm:757> INFO - Output to auxdir/project_02.bbl

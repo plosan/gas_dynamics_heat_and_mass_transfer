@@ -1,0 +1,160 @@
+
+\section{Resolució numèrica de sistemes lineals} \label{ap:sistemes_lineals}
+
+L'objectiu d'aquest annex és presentar els mètodes de resolució de sistemes lineals emprats en el projecte. La referència d'aquesta secció és \cite{apunts_aln}.
+
+Es consideren sistemes lineals de la forma $A x = b$, on $A \in \mathcal{M}_{n \times n}(\real)$ és la matriu del sistema no singular, \ie, $\det(A) \neq 0$, i on $b \in \real^n$ és el vector de termes independents.
+
+\subsection{Factorització LU}
+
+Sigui $U$ una matriu triangular superior no singular, és a dir, una matriu del tipus
+\[
+	U = 
+	\begin{pmatrix}
+		u_{11} 	& u_{12} & \cdots & u_{1,n-1} & u_{1n} \\
+		0		& u_{22} & \cdots & u_{2,n-1} & u_{2n} \\
+		\vdots	& \vdots & \ddots & \vdots 	  & \vdots \\
+		0 		& 0		 & \cdots & u_{n-1,n-1} & u_{n-1,n} \\
+		0 	   	& 0		 & \cdots & 0 			& u_{nn}
+	\end{pmatrix},
+	\quad
+	u_{ii} \neq 0 \ i = 1 \divisionsymbol n
+\]
+o equivalentment
+\[
+	U = (u_{ij})_{i, j= 1 \divisionsymbol n} = 
+	\left\{
+	\begin{aligned}
+		&u_{ij} = 0 		& 	&\text{si } i > j \\
+		&u_{ij} \neq 0 		& 	&\text{si } i = j \\
+		&u_{ij} \in \real 	& 	&\text{altrament} 
+	\end{aligned}
+	\right.
+\]
+Sigui $b = (b_i)_{i = 1 \divisionsymbol n} \in \real^n$. Aleshores el sistema $U x = b$ es pot resoldre fàcilment amb l'algoritme de substitució enrere, donat per
+\[
+	x_{n-i} =
+	\frac{1}{u_{n-i,n-i}}
+	\left(
+	b_{n-i} - \sum_{j=n-i+1}^{n} u_{n-i,j} \, x_j
+	\right),
+	\quad i = 0 \divisionsymbol n-1
+\]
+
+Sigui $L$ una matriu triangular inferior no singular, és a dir, 
+\[
+	L = 
+	\begin{pmatrix}
+		\ell_{11} 		& 0 			& \cdots & 0 				& 0  \\
+		\ell_{21} 		& \ell_{22} 	& \cdots & 0 				& 0 \\
+		\vdots 			& \vdots 		& \ddots & \vdots 	  		& \vdots \\
+		\ell_{n-1,1} 	& \ell_{n-1,2} 	& \cdots & \ell_{n-1,n-1} 	& 0 \\
+		\ell_{n1} 		& \ell_{n,2} 	& \cdots & \ell_{n,n-1} 	& \ell_{nn}
+	\end{pmatrix},
+	\quad
+	\ell_{ii} \neq 0 \ i = 1 \divisionsymbol n
+\]
+o equivalentment
+\[
+	L = (\ell_{ij})_{i, j= 1 \divisionsymbol n} = 
+	\left\{
+	\begin{aligned}
+		&\ell_{ij} = 0 			& 	&\text{si } i < j \\
+		&\ell_{ij} \neq 0 		& 	&\text{si } i = j \\
+		&\ell_{ij} \in \real 	& 	&\text{altrament} 
+	\end{aligned}
+	\right.
+\]
+De manera anàloga a l'anterior, el sistema $L x = b$ es pot resoldre fàcilment amb l'algoritme de substitució endavant,
+\[
+	x_i = 
+	\frac{1}{\ell_{ii}} 
+	\left(
+	b_i - \sum_{j=1}^{i-1} \ell_{ij} \, x_j
+	\right),
+	\quad
+	i = 1 \divisionsymbol n
+\]
+
+\begin{theorem}
+	Sigui $A \in \mathcal{M}_{n \times n}(\real)$.
+	\begin{enumerate}[label={(\arabic*)}]
+		\item Si existeixen matrius $L$ triangular inferior i $U$ triangular superior tals que $A = L U$, aleshores $L$ i $U$ són úniques.
+		\item Sigui el menor principal $k$-èsim és no nul per a tot $1 \leq k \leq n$, és a dir, si $\det A_{kk} \neq 0$ per $k = 1 \divisionsymbol n$, aleshores existeixen $L$ i $U$ tals que $A = L U$.
+		\item Si es pot fer l'eliminació de Gauss aleshores $A = L U$ on
+		\[			
+			L = 
+			\begin{pmatrix}
+				1 				& 0 			& \cdots & 0 				& 0  \\
+				\ell_{21} 		& 1 			& \cdots & 0 				& 0 \\
+				\vdots 			& \vdots 		& \ddots & \vdots 	  		& \vdots \\
+				\ell_{n-1,1} 	& \ell_{n-1,2} 	& \cdots & 1 				& 0 \\
+				\ell_{n1} 		& \ell_{n,2} 	& \cdots & \ell_{n,n-1} 	& 1
+			\end{pmatrix}
+			\qquad			
+			U = 
+			\begin{pmatrix}
+				u_{11} 	& u_{12} & \cdots & u_{1,n-1} & u_{1n} \\
+				0		& u_{22} & \cdots & u_{2,n-1} & u_{2n} \\
+				\vdots	& \vdots & \ddots & \vdots 	  & \vdots \\
+				0 		& 0		 & \cdots & u_{n-1,n-1} & u_{n-1,n} \\
+				0 	   	& 0		 & \cdots & 0 			& u_{nn}
+			\end{pmatrix}			
+		\] 
+	\end{enumerate}
+\end{theorem}
+
+En ocasions no és possible fer l'eliminació de Gauss. En tal cas, és necessari permutar les columnes de la matriu $A$ durant l'eliminació. Això s'expressa amb una matriu de permutació $P$ invertible, de tal manera que la matriu $A$ descomposa com $P A = L U$ o $A = P^{-1} L U$. Una vegada es té la descomposició d'$A$, el sistema lineal $P A x = b$ es pot resoldre com dos sistemes triangulars amb els algoritmes presentats. En efecte, donat que $P A x = L U x = b$, es resolen els sistemes $L y = b$ i $U x = y$. 
+
+El cost algorítmic de la descomposició $L U$ és $\theta(n^3)$. La resolució numèrica del sistema té un cost $\mathcal{O}(n^2)$. Per tant, asimptòticament, la resolució d'un sistema per factorització $L U$ té un cost $\theta(n^3)$. Això fa que no sigui adequada per la resolució de sistemes de dimensió $n \geq 100$.
+
+\subsection{Mètode de Gauss--Seidel}
+
+Es considera un sistema lineal $A x = b$, amb $A \in \mathcal{M}_{n \times n}(\real)$ no singular, $b \in \real^n$ i $x \in \real^n$ la solució. Una manera de resoldre'l és generar una successió $\{ x^{(k)} \}_{k \geq 0}$ tal que $\lim_{k \to \infty} x^{(k)} = x$. Aquest tipus de mètodes són adequats quan la dimensió del sistema és gran, \eg, $n \geq 100$.
+
+Un mètode iteratiu és el mètode de Gauss--Seidel, que consisteix a calcular l'iterat $x_i^{(k)}$ a partir de $x_1^{(k)}, \ldots, x_{i-1}^{(k)}$ i $x_{i+1}^{(k-1)}, \ldots, x_{n}^{(k-1)}$. El mètode ve donat per
+\[
+	x_i^{(k+1)} = 
+	\frac{1}{a_{ii}}
+	\left(
+	b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k)} - \sum_{j=i+1}^n a_{ij} x_j^{(k-1)}
+	\right)
+\]
+suposant $a_{ii} \neq 0$ per a tot $i$. Un criteri per decidir que el mètode està convergint és calcular la norma de la diferència entre dues iteracions consecutives i compararla amb una tolerància $\delta > 0$. És a dir, es calcula $r_k = \norm{x^{(k)} - x^{(k+1)}}_p$, $p \geq 1$ o $r_k = \norm{x^{(k)} - x^{(k+1)}}_\infty$. Si $r_k < \delta$ per algun $k \geq 0$, aleshores es pren com a aproximació de la solució $x^{(k+1)} \approx x$.
+
+Es diu que una matriu $A$ és simètrica definida positiva si és simètrica i $c^T A c > 0$, $\forall c \in \real^n \setminus \{ 0 \}$. Es diu que $A$ és diagonalment dominant per files si satisfà
+\[
+	\abs{a_{ii}} \geq \sum_{j = 1, j \neq i}^n \abs{a_{i j}}, \quad i = 1 \divisionsymbol n
+\]
+i és estrictament diagonalment dominant per files si la desigualtat anterior és estricta.
+
+\begin{theorem}
+	Si la matriu $A$ és simètrica definida positiva o és estrictament diagonalment dominant per files, aleshores el mètode de Gauss--Seidel convergeix.
+\end{theorem}
+
+Del mètode de Gauss--Seidel es té que
+\[
+	x_i^{(k+1)} = 
+	\frac{1}{a_{ii}}
+	\left(
+	b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k)} - \sum_{j=i+1}^n a_{ij} x_j^{(k-1)}
+	\right) = 
+	x_i^{(k)} + 
+	\frac{1}{a_{ii}}
+	\left(
+	b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k)} - \sum_{j=i}^n a_{ij} x_j^{(k-1)}
+	\right)	
+\]
+és a dir, el nou iterat $x_i^{(k+1)}$ s'obté de l'anterior $x_i^{(k)}$ sumant una correcció. Multiplicant la correcció per una constant $w$ adequada
+\[
+	x_i^{(k+1)} = 
+	x_i^{(k)} + 
+	\frac{w}{a_{ii}}
+	\left(
+	b_i - \sum_{j=1}^{i-1} a_{ij} x_j^{(k)} - \sum_{j=i}^n a_{ij} x_j^{(k-1)}
+	\right)	
+\]
+es pot accelerar la convergència del mètode. La constant $w$ s'anomena constant de relaxació i el nou mètode rep el nom de mètode de relaxació. En general, no hi ha resultats que donin $w$ òptim per accelerar la convergència.
+
+
+ 

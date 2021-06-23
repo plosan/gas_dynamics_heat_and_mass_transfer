@@ -1,0 +1,161 @@
+
+\subsection{Estudi analític}
+
+\subsubsection{Equació diferencial de la transferència de calor per conducció}
+
+Es considera un volum de control (VC) diferencial en coordenades cartesianes, de costats $\dd{x}$, $\dd{y}$ i $\dd{z}$, com el representat a la figura \ref{fig:volum_control_diferencial_cartesianes}.
+\begin{figure}[ht]
+	\centering
+	\tdplotsetmaincoords{70}{110}
+	\begin{tikzpicture}[tdplot_main_coords]
+		% Ejes
+		\draw[->, blue, line width=0.3mm] (\lside,0,0) -- (4,0,0) node[left]{$x$};
+		\draw[->, blue, line width=0.3mm] (0,\lside,0) -- (0,4,0) node[right]{$y$};
+		\draw[->, blue, line width=0.3mm] (0,0,\lside) -- (0,0,4) node[left]{$z$};
+		% Cubo
+		\draw[black, line width=0.5mm, dashed] (0,0,0) -- ++(0,0,\lside);
+		\draw[black, line width=0.5mm, dashed] (\lside,0,0) -- ++(-\lside,0,0) -- ++(0,\lside,0);
+		% Flujos de calor
+		\draw[->, red, line width=0.5mm] (-\alength,\lside/2,\lside/2) --  
+		node[midway, above, xshift=-1mm]{$\dot{Q}_{x}$} ++(\alength,0,0); % x entrante
+		\draw[->, red, line width=0.5mm] (\lside/2,-\alength,\lside/2) --  
+		node[midway, above]{$\dot{Q}_{y}$} ++(0,\alength,0); % y entrante
+		\draw[->, red, line width=0.5mm] (\lside/2,\lside/2,-\alength) --  
+		node[midway, right]{$\dot{Q}_{z}$} ++(0,0,\alength);	% z entrante		
+		% Caras
+		\path[fill=black!40!white, opacity=0.5] (\lside,0,0) -- ++(0,\lside,0) -- ++(0,0,\lside) -- ++(0,-\lside,0) -- cycle;
+		\path[fill=black!40!white, opacity=0.5] (\lside,\lside,0) -- ++(-\lside,0,0) -- ++(0,0,\lside) -- ++(\lside,0,0) -- cycle;
+		\path[fill=black!40!white, opacity=0.5] (\lside,\lside,\lside) -- ++(-\lside,0,0) -- ++(0,-\lside,0) -- ++(\lside,0,0) -- cycle;	
+		% Cubo
+		\draw[black, line width=0.5mm] (0,0,\lside) -- ++(0,\lside,0) -- ++(0,0,-\lside) -- ++(\lside,0,0) -- ++(0,-\lside,0) -- ++(0,0,\lside) -- cycle;		
+		\draw[black, line width=0.5mm] (\lside,0,\lside) -- ++(0,\lside,0) -- ++(-\lside,0,0);
+		\draw[black, line width=0.5mm] (\lside,\lside,0) -- ++(0,0,\lside);
+		% Flujos de calor
+		\draw[->, red, line width=0.5mm] (\lside,\lside/2,\lside/2) -- 
+		node[midway, right, xshift=-1mm, yshift=-2mm]{$\dot{Q}_{x + \dd{x}}$} ++(\alength,0,0); % x saliente
+		\draw[->, red, line width=0.5mm] (\lside/2,\lside,\lside/2) -- 
+		node[midway, above, xshift=2mm]{$\dot{Q}_{y + \dd{y}}$} ++(0,\alength,0); % y saliente
+		\draw[->, red, line width=0.5mm] (\lside/2,\lside/2,\lside) -- 
+		node[midway, right]{$\dot{Q}_{z + \dd{z}}$} ++(0,0,\alength); % z saliente
+	\end{tikzpicture}
+	\captionsetup{width=0.5\linewidth}
+	\caption{Volum de control diferencial en coordenades cartesianes i fluxos de calor.}
+	\label{fig:volum_control_diferencial_cartesianes}
+\end{figure}
+
+\noindent
+El VC es troba immers en un camp de temperatura $T(t, x, y, z)$, de manera que apareixen uns fluxos de calor a través de les seves cares. El flux de calor en la direcció d'un vector $\vec{n}$ ve donat per la Llei de Fourier:
+\begin{equation}
+	\dot{q}_{(\vec{n})} = -\lambda \grad{T} \cdot \vec{n}
+\end{equation}
+A més, el material pot tenir unes fonts internes de calor, que es denoten per $\dot{Q}_v$. Sobre el VC no hi actua cap força, per tant el treball és nul, $\dot{W} = 0$. Aplicant el Primer Principi de la Termodinàmica
+\begin{equation} \label{eq:primer_principi_termodinamica_01}
+	\pdv{t} \int_{VC} \rho u \dd{V} = \sum \dot{Q} - \dot{W}
+\end{equation}
+s'obté el següent:
+\begin{equation} \label{eq:primer_principi_1}
+	\pdv{t} \int_{VC} \rho u \dd{V} = 
+	\dot{Q}_{x} - \dot{Q}_{x + \dd{x}} +
+	\dot{Q}_{y} - \dot{Q}_{y + \dd{y}} +
+	\dot{Q}_{z} - \dot{Q}_{z + \dd{z}} +
+	\dot{Q}_v
+\end{equation}
+S'assumeixen densitat i calor específic constants. A partir de l'expressió de l'energia interna $\dd{u} = c_p \dd{T}$, es desenvolupa el terme esquerre de \eqref{eq:primer_principi_1}:
+\begin{equation}
+	\pdv{t} \int_{VC} \rho u \dd{V} \approx
+	\rho \pdv{u}{t} \dd{V} = 
+	\rho c_p \pdv{T}{t} \dd{V}
+\end{equation}
+A la banda dreta de \ref{eq:primer_principi_1} es tenen tres termes de la forma $\dot{Q}_{x_i} - \dot{Q}_{x_i + \dd{x_i}}$. Es desenvolupa només el terme en $x$, ja que els termes en $y$ i en $z$ són equivalents. Es considera que $\dot{Q}_x$ és una funció $\mathscr{C}^1$ en el domini d'estudi. Desenvolupant per Taylor fins primer ordre
+\begin{align}	
+	\dot{Q}_x - \dot{Q}_{x + \dd{x}}
+	&= 
+	\dot{Q}_x - \left( \dot{Q}_x + \pdv{\dot{Q}_x}{x} \dd{x} + \order{(\dd{x})^2} \right) \approx
+	-\pdv{\dot{Q}_x}{x} \dd{x} = 
+	-\pdv{x} \left( - \lambda \pdv{T}{x} \dd{y} \dd{z} \right) \dd{x} \nonumber \\ 
+	&=\pdv{x} \left( \lambda \pdv{T}{x} \right) \dd{V}
+\end{align}
+El terme de fonts internes es pot expressar com $\dot{Q}_v = \dot{q}_v \dd{V}$. Simplificant $\dd{V}$ a ambdues bandes de \eqref{eq:primer_principi_1}, l'equació queda:
+\begin{equation} \label{eq:edp_conduccio}
+	\rho c_p \pdv{T}{t} = 
+	\pdv{x} \left( \lambda \pdv{T}{x} \right) +
+	\pdv{y} \left( \lambda \pdv{T}{y} \right) +
+	\pdv{z} \left( \lambda \pdv{T}{z} \right) +
+	\dot{q}_v = 
+	\div{\left(\lambda \grad{T}\right)} + \dot{q}_v
+\end{equation}
+
+\subsubsection{Problema de Cauchy}
+
+El cas d'estudi és una de transferència de calor en un domini bidimensional, amb conductivitat tèrmica constant i sense fonts internes. Introduint aquestes simplificacions a l'equació \eqref{eq:edp_conduccio} s'obté
+\begin{equation} \label{eq:edp_problema}
+	\pdv{T}{t} = 
+	D \Delta{T} = 
+	\frac{\lambda}{\rho c_p} \left( \pdv[2]{T}{x} + \pdv[2]{T}{y} \right)
+\end{equation}
+on $D = \lambda / \left( \rho c_p \right)$ és el coeficient de difussió. Per a cada punt $p_0$ a $p_3$ de la figura \ref{fig:esquema_problema}, siguin $p_{ix}$ i $p_{iy}$ les coordenades $x$ i $y$ del punt $p_i$, respectivament. Les condicions de contorn de la taula \ref{tab:condicions_contorn} són:
+\begin{itemize}
+	\item A la paret inferior es té la condició de contorn de Neumann no homogènia
+	\begin{equation} \label{eq:condicio_01}
+		T(t,x,p_{0y}) = T_\text{inf} = 23.00 \ \celsius 
+		\quad 
+		\left.
+		\begin{aligned}
+			&0 \leq t \leq t_\text{max} \\
+			&0 \leq x \leq p_{3x}
+		\end{aligned}
+		\right\}
+	\end{equation}
+	\item Sobre la paret superior s'imposa la següent condició Neumann
+	\begin{equation} \label{eq:condicio_02}
+		\lambda \pdv{T}{t} \, (t,x,p_{3y}) \, p_{3x} = \dot{Q}_\text{sup} = 60 (p_{3x} - p_{0x}) \ \frac{\watt}{\meter} 
+		\quad 
+		\left.
+		\begin{aligned}
+			&0 \leq t \leq t_\text{max} \\
+			&0 \leq x \leq p_{3x}
+		\end{aligned}
+		\right\}		
+	\end{equation}
+	\item Sobre la paret superior es té la següent condició de Robin 
+	\begin{equation} \label{eq:condicio_03}
+		\alpha_g \left( T_g - T(t,p_{0x},y) \right) = -\lambda \pdv{T}{x} \, (t,p_{0x},y) 
+		\quad 
+		\left.
+		\begin{aligned}
+			&0 \leq t \leq t_\text{max} \\
+			&0 \leq y \leq p_{3y}
+		\end{aligned}
+		\right\}
+	\end{equation}
+	\item A la paret dreta es té la condició de Neumann no homogènia
+	\begin{equation} \label{eq:condicio_04}
+		T(t,p_{3x},y) = T_\text{right}(t) = 8.00 + 0.005 t \ \celsius
+		\quad
+		\left.
+		\begin{aligned}
+			&0 \leq t \leq t_\text{max} \\
+			&0 \leq y \leq p_{3y}
+		\end{aligned}
+		\right\}
+	\end{equation}
+\end{itemize}
+L'EDP \eqref{eq:edp_problema} juntament amb les condicions \eqref{eq:condicio_01} a \eqref{eq:condicio_04} donen lloc al problema de Cauchy \eqref{eq:problema_cauchy}.
+\begin{equation} \label{eq:problema_cauchy}
+	\left\{
+	\begin{aligned}
+		T_t - D \Delta T &= 0 & &\text{per } (t,x,y) \in \Omega = (0, t_\text{max}) \times (0, p_{3x}) \times (0, p_{3y}) \\
+		T(t,x,0) &= T_\text{inf} & &\text{per } (t,x) \in [0, t_\text{max}] \times [0, p_{3x}] \\
+		\lambda T_t (t,x,p_{3y}) &= \dot{Q}_\text{sup} & &\text{per } (t,x) \in [0, t_\text{max}] \times [0, p_{3x}] \\ 
+		\lambda T_t(t,0,y) &= \alpha_g (T(t,0,y) - T_g) & &\text{per } (t,y) \in [0, t_\text{max}] \times [0, p_{3y}] \\
+		T(t,p_{3x},y) &= T_\text{right}(t) & &\text{per } (t,y) \in [0, t_\text{max}] \times [0, p_{3y}]
+	\end{aligned}
+	\right.
+\end{equation}
+
+Les solucions clàssiques dels problemes de difussió ben posats són funcions de classe $\mathscr{C}^\infty$ en el conjunt sobre el qual està definit el problema, que a més satisfan l'EDP i les condicions de vora. Això implica que aquestes funcions són contínues sobre l'adherència del domini. Donades les condicions de vora sobre la paret inferior i la paret dreta, es dedueix que, si el problema \eqref{eq:problema_cauchy} té solució, aquesta no és contínua al punt $(t, p_{3x}, 0)$ per a tot $t \in [0, t_\text{max}]$. En conseqüència, el problema \eqref{eq:problema_cauchy} no gaudeix d'existència de solució clàssica. 
+
+
+
+
+

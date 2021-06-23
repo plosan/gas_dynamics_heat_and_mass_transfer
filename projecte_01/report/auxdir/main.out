@@ -1,0 +1,13 @@
+\BOOKMARK [1][-]{section.1}{Introducci\363}{}% 1
+\BOOKMARK [1][-]{section.2}{An\340lisi del problema}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Hip\362tesis simplificat\362ries}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Equacions de discretitzaci\363}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Equaci\363 de discretitzaci\363 del node extrem i = 0}{subsection.2.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Equaci\363 de discretitzaci\363 dels nodes interns \(1 a N\)}{subsection.2.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Equaci\363 de discretitzaci\363 del node extrem i = N + 1}{subsection.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Algoritme de resoluci\363}{section.2}% 8
+\BOOKMARK [1][-]{section.3}{Resoluci\363 del problema}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Dades f\355siques i num\350riques}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Gr\340fiques}{section.3}% 11
+\BOOKMARK [1][-]{appendix.A}{Algoritme TDMA}{}% 12
+\BOOKMARK [1][-]{appendix.B}{Algoritme de resoluci\363}{}% 13

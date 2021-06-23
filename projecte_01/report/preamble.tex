@@ -1,0 +1,164 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[catalan]{babel}
+\usepackage{enumitem}
+\usepackage{amsthm, amsmath, amssymb, amsfonts, mathtools, mathrsfs}
+\usepackage{graphicx, calc}
+\usepackage{empheq}
+\usepackage{geometry}
+\geometry{a4paper, left = 20mm, right = 20mm, top = 30mm, bottom = 30mm}
+\usepackage{xspace}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage[style=english]{csquotes}
+\usepackage{titling}
+\usepackage{accents}
+\usepackage[labelfont=bf,labelsep=period]{caption}
+\usepackage{placeins} % FloatBarrier
+\usepackage{physics}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+%\usepackage[sorting=none,style=numeric]{biblatex}
+%\addbibresource{referencias.bib}
+
+% Matlab code
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{lmodern}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=green,
+	filecolor=black,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{30pt}
+\rhead{ESEIAAT 2020 -- 2021}
+\lhead{Dinàmica de Gasos i Transferència de Calor i Massa}
+\cfoot{\thepage}
+
+\setlength{\parskip}{0.2cm}%
+
+% Comandos
+\newcommand{\n}{\mathbb{N}}
+\newcommand{\z}{\mathbb{Z}}
+\newcommand{\q}{\mathbb{Q}}
+\renewcommand{\real}{\mathbb{R}}
+\newcommand{\cplex}{\mathbb{C}}
+\renewcommand{\k}{\mathbb{K}}
+\newcommand{\car}[1]{\mathrm{char}\left(#1\right)}
+\newcommand{\class}[1]{\overline{#1}}
+\newcommand{\mcd}[1]{\mathrm{mcd}{#1}}
+\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\fractions}[1]{\mathrm{Fr}(#1)}
+\renewcommand{\gcd}[1]{\mathrm{mcd} #1}
+\newcommand{\mcm}[1]{\mathrm{mcm} #1}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\prob}[1]{p \left( #1 \right)}
+\newcommand{\esp}[1]{\mathbb{E} \left[ #1 \right]}
+\newcommand{\scr}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\Int}{\int\limits}
+\newcommand{\id}{\mathrm{Id}}
+\newcommand{\lt}[1]{\mathrm{LT}(#1)}
+\newcommand{\lc}[1]{\mathrm{LC}(#1)}
+
+\newcommand{\divides}{\mid}
+\newcommand{\notdivides}{\nmid}
+
+\newcommand{\separation}{
+	\begin{center}
+		\rule{\textwidth-20pt}{1pt}
+	\end{center}
+}
+
+% Comandos grupos
+\newcommand{\generated}[1]{\langle #1 \rangle}
+
+% Conjunto vacío
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+% Imagen
+\DeclareMathOperator{\image}{Im}
+
+
+% Abreviaciones
+\newcommand*{\eg}{e.g.\@\xspace}
+\newcommand*{\ie}{i.e.\@\xspace}
+
+
+% Conjunto cociente
+\newcommand{\quotient}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+
+% Numerales romanos en el texto
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+
+%\DeclarePairedDelimiter\abs{\lvert}{\rvert} 		% abs
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}		% ceil
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}		% floor
+
+% Swap de phi y varphi
+\let\temp\phi
+\let\phi\varphi
+\let\varphi\temp
+
+% Enumerate definición
+\newlist{enumeratedef}{enumerate}{3}
+\setlist[enumeratedef]{label=(\roman*),topsep=0pt}
+
+% Enumerate proposición
+\newlist{enumerateprop}{enumerate}{3}
+\setlist[enumerateprop]{label=(\arabic*),topsep=0pt}
+
+% Enumerate ejemplo
+\newlist{enumeratex}{enumerate}{3}
+\setlist[enumeratex]{label=\arabic*.,topsep=0pt}
+
+% Enumerate ejercicio
+\newlist{enumeratexercise}{enumerate}{3}
+\setlist[enumeratexercise]{label=(\alph*),topsep=0pt}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+	\vspace{-\topsep}% remove the space after the theorem
+	\pushQED{\qed}%
+	\normalfont
+	\topsep0pt \partopsep0pt % no space before
+	\trivlist
+	\item[\hskip\labelsep
+	\itshape
+	#1\@addpunct{.}]\ignorespaces
+}{%
+	\popQED\endtrivlist\@endpefalse
+	\addvspace{6pt plus 6pt} % some space after
+}
+\makeatother
+
+\makeatletter
+\renewcommand{\ALG@name}{Algoritme}
+\makeatother
+
+% Align images at top of the page when using [ht]
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+
+% New colors
+\definecolor{nodeColor}{RGB}{62,180,0} 
+\definecolor{tempColor}{RGB}{255,0,0} 
+
+
+
+

@@ -1,0 +1,76 @@
+
+\subsection{Estudi numèric}
+
+\subsubsection{Discretització espacial i temporal}
+
+La discretització espacial i temporal d'aquest nou problema és equivalent a la estudiada a la secció \ref{sec:estudi_numeric}. La simetria del problema fa adequada una discretització uniforme. Els material $M_1$ i $M_3$ es discretitzen horitzontalment en $N_1$ volums de control. Els materials $M_2$ I $M_4$ es discretitzen horitzontalment en $N_2 = N_1$ volums de control. El material $M_1$ es discretitza verticalment en $L_1 = \frac{2}{3} N_1$ volums de control. El material $M_4$ es discretitza verticalment en $L_3 = L_1$ volums de control. Per últim, la zona de contacte entre $M_2$ i $M_3$ es discretitza verticalment en $L_2 = L_1$ volums de control. Per la discretització temporal, es pren novament una discretització uniforme amb pas de temps $\Delta t$ i un interval $[0, t_\text{max}]$.
+
+\subsubsection{Equacions de discretització}
+
+No s'aprofundirà en la deducció de les equacions de discretització, ja que aquest tipus de desenvolupament ja s'ha fet. L'equació de discretització dels nodes interns és igual a la ja vista anteriorment,
+\begin{multline} \label{eq:nova_equacio_discretitzacio_nodes_interns}
+	\left[
+	\frac{\rho_P V_P c_{p_P}}{\Delta t} + 
+	\beta \left(
+	\frac{\lambda_w S_w}{d_{PW}} + 
+	\frac{\lambda_e S_e}{d_{PE}} + 
+	\frac{\lambda_s S_s}{d_{PS}} + 
+	\frac{\lambda_n S_n}{d_{PN}}
+	\right)
+	\right] T_P^{n+1} = \\
+	=
+	\beta \frac{\lambda_w S_w}{d_{PW}} T_W^{n+1} + 
+	\beta \frac{\lambda_e S_e}{d_{PE}} T_E^{n+1} + 
+	\beta \frac{\lambda_s S_s}{d_{PS}} T_S^{n+1} + 
+	\beta \frac{\lambda_n S_n}{d_{PN}} T_N^{n+1} + 
+	\frac{\rho_P V_P c_{p_P}}{\Delta t} T_P^n + 
+	(1 - \beta) \sum \dot{Q}_P^n	
+\end{multline}
+amb coeficients de discretització
+\begin{align}
+	a_W &= \beta \frac{\lambda_w S_w}{d_{PW}} \\
+	a_E &= \beta \frac{\lambda_e S_e}{d_{PE}} \\
+	a_S &= \beta \frac{\lambda_s S_s}{d_{PS}} \\
+	a_N &= \beta \frac{\lambda_n S_n}{d_{PN}} \\
+	a_P &= \frac{\rho_P V_P c_{p_P}}{\Delta t} + a_W + a_E + a_S + a_N \\
+	b_P &= \frac{\rho_P V_P c_{p_P}}{\Delta t} T_P^n + (1 - \beta) \sum \dot{Q}_P^n	
+\end{align}
+Pels nodes de la paret inferior, l'equació i els coeficients de discretització són
+\begin{align}
+	\left( \frac{\lambda_n}{d_{PN}} + \alpha_g \right) T_P^{n+1} &= 
+	\frac{\lambda_n}{d_{PN}} T_N^{n+1} + \alpha_g T_g \\
+	a_W = a_E &= a_S = 0 \\
+	a_N &= \frac{\lambda_n}{d_{PN}} \\
+	a_P &= a_N + \alpha_g \\
+	b_P &= \alpha_g T_g
+\end{align}
+Pels nodes de la paret superior, la discretització és
+\begin{align}
+	\left( \frac{\lambda_s}{d_{PS}} + \alpha_g \right) T_P^{n+1} &= 
+	\frac{\lambda_s}{d_{PS}} T_S^{n+1} + \alpha_g T_g \\
+	a_W = a_E &= a_N = 0 \\
+	a_S &= \frac{\lambda_s}{d_{PS}} \\
+	a_P &= a_S + \alpha_g \\
+	b_P &= \alpha_g T_g
+\end{align}
+Pels nodes de la paret esquerre,
+\begin{align}
+	\left( \frac{\lambda_e}{d_{PE}} + \alpha_g \right) T_P^{n+1} &= 
+	\frac{\lambda_e}{d_{PE}} T_E^{n+1} + \alpha_g T_g \\
+	a_W = a_S &= a_N = 0 \\
+	a_E &= \frac{\lambda_e}{d_{PE}} \\
+	a_P &= a_E + \alpha_g \\
+	b_P &= \alpha_g T_g
+\end{align}
+En els nodes de la paret dreta es té
+\begin{align}
+	\left( \frac{\lambda_w}{d_{PW}} + \alpha_g \right) T_P^{n+1} &= 
+	\frac{\lambda_w}{d_{PW}} T_W^{n+1} + \alpha_g T_g \\
+	a_E = a_S &= a_N = 0 \\
+	a_W &= \frac{\lambda_w}{d_{PW}} \\
+	a_P &= a_W + \alpha_g \\
+	b_P &= \alpha_g T_g
+\end{align}
+Per acabar, en els nodes singulars s'imposa que la temperatura sigui la mitja aritmètica dels nodes veïns.
+
+L'algoritme de resolució del nou problema és l'algoritme \ref{algorithm:algoritme_resolucio_2}. En aquest cas, els únics coeficients de discretització no constants són els $b_P$ dels nodes interns. Aquest canvi requereix només d'una petita modificació en el codi.

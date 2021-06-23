@@ -1,0 +1,74 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {catalan}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Introducció}{3}{section.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Estudi del problema}{4}{section.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1}Estudi analític}{4}{subsection.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.1}Equació diferencial de la transferència de calor per conducció}{4}{subsubsection.2.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.1.2}Problema de Cauchy}{5}{subsubsection.2.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2}Estudi numèric}{6}{subsection.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.1}Discretització espacial}{6}{subsubsection.2.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.2}Discretització temporal}{7}{subsubsection.2.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.3}Equació de discretització dels nodes interns $1 \leq i \leq N, \, 1 \leq j \leq L$}{8}{subsubsection.2.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.4}Equació de discretització dels nodes inferiors $\left ( 1 \leq i \leq N, \, j = 0 \right )$}{11}{subsubsection.2.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.5}Equació de discretització dels nodes superiors $\left ( 1 \leq i \leq N, \, j = L+1 \right )$}{11}{subsubsection.2.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.6}Equació de discretització dels nodes esquerres $\left ( i = 0, \, 1 \leq j \leq L \right )$}{12}{subsubsection.2.2.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.7}Equació de discretització dels nodes drets $\left ( i = N+1, \, 1 \leq j \leq L \right )$}{13}{subsubsection.2.2.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.8}Nodes singulars}{13}{subsubsection.2.2.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {2.2.9}Algoritme de resolució}{14}{subsubsection.2.2.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Validació}{17}{section.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1}Validació 1: Primer Principi de la Termodinàmica}{17}{subsection.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2}Validació 2: Càlcul d'isotermes}{21}{subsection.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Anàlisi d'influència de dades numèriques}{23}{section.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1}Densitat de malla}{23}{subsection.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2}Pas de temps}{24}{subsection.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3}Esquema d'integració temporal}{24}{subsection.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.4}Resultats}{24}{subsection.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Variació en la geometria i en les condicions de contorn}{31}{section.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1}Plantejament}{31}{subsection.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2}Estudi numèric}{32}{subsection.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.2.1}Discretització espacial i temporal}{32}{subsubsection.5.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\numberline {5.2.2}Equacions de discretització}{32}{subsubsection.5.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.3}Resultats}{33}{subsection.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A}Càlcul numèric de derivades i integrals}{37}{appendix.A}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.1}Interpolació polinòmica i polinomi de Taylor}{37}{subsection.A.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.2}Càlcul numèric de derivades}{38}{subsection.A.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {A.3}Càlcul numèric d'integrals}{39}{subsection.A.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B}Resolució numèrica de sistemes lineals}{42}{appendix.B}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B.1}Factorització LU}{42}{subsection.B.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {B.2}Mètode de Gauss--Seidel}{43}{subsection.B.2}%
