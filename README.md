@@ -75,17 +75,17 @@ initial conditions and boundary conditions are required. Hence, an important par
 diffusion equation.
 
 When dealing with IVPs one cares about the existence and uniqueness of a solution. As stated above, the equation is the diffusion equation
-<img src="https://render.githubusercontent.com/render/math?math=u_t + D \Delta u = 0"> in the domain
-<img src="https://render.githubusercontent.com/render/math?math=\Omega = (0,W) \times (0, H) \subset \mathbb{R}^2"> with mixed boundary conditions at
-<img src="https://render.githubusercontent.com/render/math?math=\partial \Omega">.
+<img src="https://render.githubusercontent.com/render/math?math= u_t - D \Delta u = 0"> on the domain
+<img src="https://render.githubusercontent.com/render/math?math= \Omega = (0,W) \times (0, H) \subset \mathbb{R}^2"> with mixed boundary conditions at
+<img src="https://render.githubusercontent.com/render/math?math= \partial \Omega">.
 
-Consider the general homogeneous diffusion problem at <img src="https://render.githubusercontent.com/render/math?math=\mathbb{R}^n \times [0, +\infty)">
-with initial condition <img src="https://render.githubusercontent.com/render/math?math=g \in C(\mathbb{R}^n) \cap L^\infty(\mathbb{R}^n)">. A well-known
-result is that the solution to the problem is a <img src="https://render.githubusercontent.com/render/math?math=C^\infty(\mathbb{R}^n \times (0,\infty))">
+Consider the general homogeneous diffusion problem at <img src="https://render.githubusercontent.com/render/math?math= \mathbb{R}^n \times [0, +\infty)">
+with initial condition <img src="https://render.githubusercontent.com/render/math?math= g \in C(\mathbb{R}^n) \cap L^\infty(\mathbb{R}^n)">. A well-known
+result is that the solution to the problem is a <img src="https://render.githubusercontent.com/render/math?math= C^\infty(\mathbb{R}^n \times (0,\infty))">
 function (Theorem 1, section 2.3, Partial Differential Equations - Lawrence C. Evans).
 
 By doing reflections and periodic extensions, it might be possible to extend the 2D heat transfer problem to a problem in
-<img src="https://render.githubusercontent.com/render/math?math=\mathbb{R}^2 \times [0, +\infty)">. This extended problem might not be homogeneous,
-that is, it might have internal heat sources given by a function <img src="https://render.githubusercontent.com/render/math?math=f \colon \mathbb{R}^2 \times [0,+\infty) \rightarrow \mathbb{R}">.
-If <img src="https://render.githubusercontent.com/render/math?math=f"> is good enough, then the extended problem has existence and uniqueness of solution.
-The restriction of this solution to <img src="https://render.githubusercontent.com/render/math?math=\Omega"> would be the solution to the initial problem.
+<img src="https://render.githubusercontent.com/render/math?math= \mathbb{R}^2 \times [0, +\infty)">. This extended problem might not be homogeneous,
+that is, it might have internal heat sources given by a function <img src="https://render.githubusercontent.com/render/math?math= f \colon \mathbb{R}^2 \times [0,+\infty) \rightarrow \mathbb{R}">.
+If <img src="https://render.githubusercontent.com/render/math?math= f"> is good enough, then the extended problem has existence and uniqueness of solution.
+The restriction of this solution to <img src="https://render.githubusercontent.com/render/math?math= \Omega"> would be the solution to the initial problem.
