@@ -1,4 +1,4 @@
-# gas_dynamics_heat_and_mass_transfer
+# Gas Dynamics and Heat and Mass Transfer
 
 This is a repository to store the Gas Dynamics and Heat and Mass Transfer course project.
 
