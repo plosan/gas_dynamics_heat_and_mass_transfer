@@ -75,7 +75,7 @@ initial conditions and boundary conditions are required. Hence, an important par
 diffusion equation.
 
 When dealing with IVPs one cares about the existence and uniqueness of a solution. As stated above, the equation is the diffusion equation
-<img src="https://render.githubusercontent.com/render/math?math= u_t - D \Delta u = 0"> on the domain
+$u_t - \Delta u = 0$ on the domain
 <img src="https://render.githubusercontent.com/render/math?math= \Omega = (0,W) \times (0, H) \subset \mathbb{R}^2"> with mixed boundary conditions at
 <img src="https://render.githubusercontent.com/render/math?math= \partial \Omega">.
 
